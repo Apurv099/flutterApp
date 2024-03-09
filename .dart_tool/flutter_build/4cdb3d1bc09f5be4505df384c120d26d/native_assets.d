@@ -1,0 +1,1 @@
+ C:\\flutter-app\\infy_me\\.dart_tool\\flutter_build\\4cdb3d1bc09f5be4505df384c120d26d\\native_assets.yaml: 
