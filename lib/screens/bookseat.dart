@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,7 +6,8 @@ import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:intl/intl.dart';
 
 class BookSeat extends StatefulWidget {
-  const BookSeat({super.key});
+  final String? seatNo;
+  const BookSeat({super.key, this.seatNo});
 
   @override
   State<BookSeat> createState() => _BookSeatState();
@@ -18,7 +19,12 @@ class _BookSeatState extends State<BookSeat> {
         name: DateFormat('dd-MMM-yyyy')
             .format(DateTime.now().add(Duration(days: 1)))
             .toString(),
-        value: 1)
+        value: 1),
+    DropDownValueModel(
+        name: DateFormat('dd-MMM-yyyy')
+            .format(DateTime.now().add(Duration(days: 2)))
+            .toString(),
+        value: 2)
   ];
   List<DropDownValueModel> city = [
     DropDownValueModel(name: "Bhubaneshwar", value: "Bhubaneshwar"),
@@ -74,6 +80,7 @@ class _BookSeatState extends State<BookSeat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         flexibleSpace: Opacity(
           opacity: 0.9,
@@ -103,206 +110,357 @@ class _BookSeatState extends State<BookSeat> {
         //   child: Container(),
         // ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: CircleAvatar(
-                  radius: 22,
-                  backgroundColor: const Color.fromARGB(255, 102, 0, 120),
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                "Provide your DC and building preferences",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FormLabel(context, "Date"),
-                    DropDownTextField(
-                      initialValue: date[0].name,
-                      dropdownRadius: 0,
-                      // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
-                      clearOption: false,
-                      dropDownList: date,
-                      onChanged: (val) {},
-                    ),
-                    FormLabel(context, "City"),
-                    DropDownTextField(
-                      initialValue: "Mumbai",
-                      dropdownRadius: 0,
-                      // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
-                      clearOption: false,
-                      dropDownList: city,
-                      onChanged: (val) {},
-                    ),
-                    FormLabel(context, "DC"),
-                    DropDownTextField(
-                      initialValue: "ILMUMBAISTP",
-                      dropdownRadius: 0,
-                      // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
-                      clearOption: false,
-                      dropDownList: dc,
-                      onChanged: (val) {},
-                    ),
-                    FormLabel(context, "Allocation"),
-                    Row(
-                      children: [
-                        Radio(
-                            value: 1,
-                            groupValue: selectedRadio,
-                            onChanged: (v) {
-                              setState(() {
-                                selectedRadio = v;
-                              });
-                            }),
-                        Text(
-                          "Account",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16),
-                        ),
-                        Radio(
-                            value: 2,
-                            groupValue: selectedRadio,
-                            onChanged: (v) {
-                              setState(() {
-                                selectedRadio = v;
-                              });
-                            }),
-                        Text(
-                          "Unit/Subunit",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16),
-                        ),
-                        Radio(
-                            value: 3,
-                            groupValue: selectedRadio,
-                            onChanged: (v) {
-                              setState(() {
-                                selectedRadio = v;
-                              });
-                            }),
-                        Text(
-                          "General",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    FormLabel(context, "Building Number"),
-                    DropDownTextField(
-                      initialValue: "SDB01",
-                      dropdownRadius: 0,
-                      // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
-                      clearOption: false,
-                      dropDownList: buildingNo,
-                      onChanged: (val) {},
-                    ),
-                    Row(
-                      children: [
-                        Flexible(
-                          flex: 48,
-                          child: Container(
-                            child: Column(
-                              children: [
-                                FormLabel(context, "Floor"),
-                                DropDownTextField(
-                                  initialValue: "FLOOR-4",
-                                  dropdownRadius: 0,
-                                  // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
-                                  clearOption: false,
-                                  dropDownList: floor,
-                                  onChanged: (val) {},
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Flexible(
-                          flex: 48,
-                          child: Container(
-                            child: Column(
-                              children: [
-                                FormLabel(context, "Wing"),
-                                DropDownTextField(
-                                  initialValue: "A",
-                                  dropdownRadius: 0,
-                                  // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
-                                  clearOption: false,
-                                  dropDownList: wing,
-                                  onChanged: (val) {},
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
                     Container(
-                      margin: EdgeInsets.only(top: 8),
                       child: Card(
-                        // margin: EdgeInsets.all(10),
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero),
                         color: Colors.white,
-                        // clipBehavior: Clip.antiAlias,
-                        elevation: 3,
-                        child: Container(
-                          padding: EdgeInsets.all(15),
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 255, 255, 255)),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Available Seats",
-                                  style: GoogleFonts.openSans(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 15, 20, 30),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      DateFormat('dd-MMM-yyyy')
+                                          .format(DateTime.now())
+                                          .toString(),
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color.fromARGB(
+                                              255, 135, 135, 135)),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Chip(
+                                          labelPadding: EdgeInsets.only(
+                                              left: 17, right: 17),
+                                          padding: EdgeInsets.zero,
+                                          // materialTapTargetSize:
+                                          //     MaterialTapTargetSize.shrinkWrap,
+                                          visualDensity: VisualDensity(
+                                              horizontal: -4, vertical: -4),
+                                          label: Container(
+                                            child: Text(
+                                              "BOOKED",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: const Color.fromARGB(
+                                                      255, 61, 141, 63),
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
+                                          shape: StadiumBorder(
+                                              side: BorderSide(
+                                                  width: 2,
+                                                  color: const Color.fromARGB(
+                                                      255, 61, 141, 63))),
+                                        ),
+                                        SizedBox(
+                                          width: 30,
+                                        ),
+                                        Icon(
+                                          Icons.more_vert,
+                                          size: 30,
+                                          color: Colors.grey,
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Text(
+                                  "Cubicle: MUM02 01 04 A ${widget?.seatNo}", //amethysta
+                                  style: TextStyle(
+                                      wordSpacing: 0,
                                       color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18),
-                                ),
-                                Text(
-                                  "0",
-                                  style: GoogleFonts.openSans(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18),
-                                ),
-                              ]),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16)),
+                              Text(
+                                  "Mumbai, ILMUMBAISTP, SDB01, FLOOR-04, A Wing", //amethysta
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black87))
+                            ],
+                          ),
                         ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: CircleAvatar(
+                        radius: 22,
+                        backgroundColor: const Color.fromARGB(255, 102, 0, 120),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      "Provide your DC and building preferences",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          FormLabel(context, "Date"),
+                          DropDownTextField(
+                            initialValue: date[0].name,
+                            dropdownRadius: 0,
+                            dropdownColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            clearOption: false,
+                            dropDownList: date,
+                            onChanged: (val) {},
+                          ),
+                          FormLabel(context, "City"),
+                          DropDownTextField(
+                            initialValue: "Mumbai",
+                            dropdownRadius: 0,
+                            // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
+                            clearOption: false,
+                            dropDownList: city,
+                            onChanged: (val) {},
+                          ),
+                          FormLabel(context, "DC"),
+                          DropDownTextField(
+                            initialValue: "ILMUMBAISTP",
+                            dropdownRadius: 0,
+                            // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
+                            clearOption: false,
+                            dropDownList: dc,
+                            onChanged: (val) {},
+                          ),
+                          FormLabel(context, "Allocation"),
+                          Row(
+                            children: [
+                              Radio(
+                                  value: 1,
+                                  groupValue: selectedRadio,
+                                  onChanged: (v) {
+                                    setState(() {
+                                      selectedRadio = v;
+                                    });
+                                  }),
+                              Text(
+                                "Account",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16),
+                              ),
+                              Radio(
+                                  value: 2,
+                                  groupValue: selectedRadio,
+                                  onChanged: (v) {
+                                    setState(() {
+                                      selectedRadio = v;
+                                    });
+                                  }),
+                              Text(
+                                "Unit/Subunit",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16),
+                              ),
+                              Radio(
+                                  value: 3,
+                                  groupValue: selectedRadio,
+                                  onChanged: (v) {
+                                    setState(() {
+                                      selectedRadio = v;
+                                    });
+                                  }),
+                              Text(
+                                "General",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          FormLabel(context, "Building Number"),
+                          DropDownTextField(
+                            initialValue: "SDB01",
+                            dropdownRadius: 0,
+                            // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
+                            clearOption: false,
+                            dropDownList: buildingNo,
+                            onChanged: (val) {},
+                          ),
+                          Row(
+                            children: [
+                              Flexible(
+                                flex: 48,
+                                child: Container(
+                                  child: Column(
+                                    children: [
+                                      FormLabel(context, "Floor"),
+                                      DropDownTextField(
+                                        initialValue: "FLOOR-4",
+                                        dropdownRadius: 0,
+                                        // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
+                                        clearOption: false,
+                                        dropDownList: floor,
+                                        onChanged: (val) {},
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Flexible(
+                                flex: 48,
+                                child: Container(
+                                  child: Column(
+                                    children: [
+                                      FormLabel(context, "Wing"),
+                                      DropDownTextField(
+                                        initialValue: "A",
+                                        dropdownRadius: 0,
+                                        // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
+                                        clearOption: false,
+                                        dropDownList: wing,
+                                        onChanged: (val) {},
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 8),
+                            child: Card(
+                              // margin: EdgeInsets.all(10),
+                              color: Colors.white,
+                              // clipBehavior: Clip.antiAlias,
+                              elevation: 2,
+                              child: Container(
+                                padding: EdgeInsets.all(15),
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 255, 255, 255)),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Available Seats",
+                                        style: GoogleFonts.openSans(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 18),
+                                      ),
+                                      Text(
+                                        "0",
+                                        style: GoogleFonts.openSans(
+                                            color: Colors.green,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18),
+                                      ),
+                                    ]),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     )
                   ],
                 ),
-              )
-            ],
+              ),
+            ),
           ),
-        ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Text("CHOOSE SEAT",
+                          style: TextStyle(color: Colors.white)),
+                    ),
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color?>(
+                            Colors.blueGrey[700])),
+                  ),
+                ),
+                Container(
+                    margin: EdgeInsets.only(top: 8, bottom: 8),
+                    width: MediaQuery.of(context).size.width,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Text(
+                          "GET SYSTEM ALLOCATED SEAT",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color?>(
+                              Colors.blueGrey[700])),
+                    )),
+                Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Text("SEARCH BY CUBILE ID",
+                            style: TextStyle(color: Colors.white)),
+                      ),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color?>(
+                              Colors.black87)),
+                    )),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

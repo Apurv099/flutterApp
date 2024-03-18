@@ -3,10 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infy_me/screens/bookseat.dart';
-
+import 'package:intl/intl.dart';
 // import 'package:google_fonts/google_fonts.dart';
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String? seatNo;
+  const HomeScreen({super.key, this.seatNo});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -16,9 +17,11 @@ class _HomeScreenState extends State<HomeScreen> {
   late PageController pageController;
   int activePage = 0;
   List<String> image = [
-    "https://images.wallpapersden.com/image/download/purple-sunrise-4k-vaporwave_bGplZmiUmZqaraWkpJRmbmdlrWZlbWU.jpg",
-    "https://wallpaperaccess.com/full/2637581.jpg",
-    "https://uhdwallpapers.org/uploads/converted/20/01/14/the-mandalorian-5k-1920x1080_477555-mm-90.jpg"
+    "assets/images/1.jpeg",
+    "assets/images/2.jpeg",
+    "assets/images/3.jpeg",
+    "assets/images/4.jpeg",
+    "assets/images/5.jpeg",
   ];
   List<String> freqTasks = [
     "Book Seat",
@@ -80,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                     },
                     itemBuilder: (BuildContext context, pagePosition) {
-                      return Image.network(
+                      return Image.asset(
                         image[pagePosition].toString(),
                         fit: BoxFit.fill,
                         // width: MediaQuery.of(context).size.width,
@@ -106,8 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: NetworkImage(
-                                "https://i.pinimg.com/474x/ba/38/39/ba3839c37b8461b4c3c4c8835c6707bf.jpg"),
+                            image: AssetImage('assets/images/background.jpeg'),
                             fit: BoxFit.fill)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               height: 20,
                                             ),
                                             Text(
-                                                "Work From Home request Approved by BharathRaj_P for 0${index + 1}-Feb-2024 09:00-0${index + 1}-Feb-2024 20:00",
+                                                "Work From Home request Approved by BharathRaj_P for ${DateFormat('dd-MMM-yyyy').format(DateTime.now().subtract(Duration(days: index))).toString()}, 09:00-${DateFormat('dd-MMM-yyyy').format(DateTime.now().subtract(Duration(days: index))).toString()} 20:00",
                                                 style: GoogleFonts.openSans(
                                                     color: Colors.black,
                                                     fontWeight:
@@ -220,9 +222,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     if (index == 0)
                                       InkWell(
                                         onTap: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                                            BookSeat()
-                                          ));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      BookSeat(
+                                                        seatNo: widget?.seatNo,
+                                                      )));
                                         },
                                         child: Icon(
                                           Icons.domain_add_outlined,
