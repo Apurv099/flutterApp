@@ -168,9 +168,9 @@ class _BookSeatState extends State<BookSeat> {
                         elevation: 2,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero),
-                        color: Colors.white,
+                        // color: Colors.white,
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 15, 20, 30),
+                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 30),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -196,6 +196,7 @@ class _BookSeatState extends State<BookSeat> {
                                           MainAxisAlignment.spaceAround,
                                       children: [
                                         Chip(
+                                          backgroundColor: Colors.white,
                                           labelPadding: EdgeInsets.only(
                                               left: 17, right: 17),
                                           padding: EdgeInsets.zero,
@@ -469,9 +470,13 @@ class _BookSeatState extends State<BookSeat> {
                       child: Text("CHOOSE SEAT",
                           style: TextStyle(color: Colors.white)),
                     ),
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color?>(
-                            Colors.blueGrey[700])),
+                    // style: ButtonStyle(
+                    //     backgroundColor: MaterialStateProperty.all<Color?>(
+                    //         Colors.blueGrey[700])),
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)),
+                        backgroundColor: Colors.blueGrey[700]),
                   ),
                 ),
                 Container(
@@ -486,9 +491,10 @@ class _BookSeatState extends State<BookSeat> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color?>(
-                              Colors.blueGrey[700])),
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          backgroundColor: Colors.blueGrey[700]),
                     )),
                 Container(
                     width: MediaQuery.of(context).size.width,
@@ -499,9 +505,10 @@ class _BookSeatState extends State<BookSeat> {
                         child: Text("SEARCH BY CUBILE ID",
                             style: TextStyle(color: Colors.white)),
                       ),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color?>(
-                              Colors.black87)),
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          backgroundColor: Colors.black87),
                     )),
               ],
             ),
