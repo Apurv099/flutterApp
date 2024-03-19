@@ -17,30 +17,33 @@ class _SeatNumberState extends State<SeatNumber> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Center(
-          child: Column(
-            children: [
-              Text("Enter Seat"),
-              TextFormField(
-                controller: fieldControl,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(3)
-                ],
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(hintText: "Enter 3 digits"),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomeScreen(
-                                  seatNo: fieldControl?.text ?? "396",
-                                )));
-                  },
-                  child: Text("Next"))
-            ],
+        body: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Center(
+            child: Column(
+              children: [
+                Text("Enter Seat"),
+                TextFormField(
+                  controller: fieldControl,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(3)
+                  ],
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(hintText: "Enter 3 digits"),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen(
+                                    seatNo: fieldControl?.text ?? "396",
+                                  )));
+                    },
+                    child: Text("Next"))
+              ],
+            ),
           ),
         ));
   }
