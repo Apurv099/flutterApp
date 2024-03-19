@@ -122,13 +122,13 @@ class _BookSeatState extends State<BookSeat> {
       body: Column(
         children: [
           Container(
-            height: 38,
+            height: 35,
           ),
           Container(
             margin: EdgeInsets.only(bottom: 10),
             width: MediaQuery.of(context).size.width,
             height: 52,
-            color: Color.fromARGB(255, 144, 0, 169),
+            color: Color.fromARGB(210, 124, 0, 169),
             child: Row(
               children: [
                 IconButton(
