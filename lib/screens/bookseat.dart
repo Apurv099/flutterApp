@@ -173,7 +173,7 @@ class _BookSeatState extends State<BookSeat> {
                             borderRadius: BorderRadius.zero),
                         // color: Colors.white,
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 30),
+                          padding: const EdgeInsets.fromLTRB(20, 15, 20, 30),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
