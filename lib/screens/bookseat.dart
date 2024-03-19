@@ -127,8 +127,8 @@ class _BookSeatState extends State<BookSeat> {
           Container(
             margin: EdgeInsets.only(bottom: 10),
             width: MediaQuery.of(context).size.width,
-            height: 55,
-            color: Color.fromARGB(255, 143, 0, 168),
+            height: 53,
+            color: Color.fromARGB(255, 107, 31, 120),
             child: Row(
               children: [
                 IconButton(
@@ -139,7 +139,7 @@ class _BookSeatState extends State<BookSeat> {
                   color: Colors.white,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.25,
+                  width: MediaQuery.of(context).size.width * 0.23,
                 ),
                 Text(
                   "BOOK SEAT",
