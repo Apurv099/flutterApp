@@ -241,7 +241,7 @@ class _BookSeatState extends State<BookSeat> {
                               Text(
                                   "Mumbai, ILMUMBAISTP, SDB01, FLOOR-04, A Wing", //amethysta
                                   style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                       color: Colors.black87))
                             ],
