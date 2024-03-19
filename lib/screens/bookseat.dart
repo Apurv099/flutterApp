@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:dropdown_textfield/dropdown_textfield.dart';
+// import 'package:dropdown_textfield/dropdown_textfield.dart';
+
 import 'package:intl/intl.dart';
+
+import 'drop.dart';
 
 class BookSeat extends StatefulWidget {
   final String? seatNo;
@@ -159,7 +162,7 @@ class _BookSeatState extends State<BookSeat> {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -243,6 +246,9 @@ class _BookSeatState extends State<BookSeat> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 16)),
+                              SizedBox(
+                                height: 5,
+                              ),
                               Text(
                                   "Mumbai, ILMUMBAISTP, SDB01, FLOOR-04, A Wing", //amethysta
                                   style: TextStyle(
@@ -285,8 +291,11 @@ class _BookSeatState extends State<BookSeat> {
                         children: [
                           FormLabel(context, "Date"),
                           DropDownTextField(
-                            // textFieldDecoration: InputDecoration(
-                            //     contentPadding: EdgeInsets.only(bottom: 20)),
+                            // dropDownIconProperty: IconProperty(size: 20),
+                            padding: EdgeInsets.zero,
+                            textFieldDecoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.only(top: 23, bottom: 0)),
                             initialValue: date[0].name,
                             dropdownRadius: 0,
                             dropdownColor:
@@ -297,6 +306,10 @@ class _BookSeatState extends State<BookSeat> {
                           ),
                           FormLabel(context, "City"),
                           DropDownTextField(
+                            padding: EdgeInsets.zero,
+                            textFieldDecoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.only(top: 23, bottom: 0)),
                             initialValue: "Mumbai",
                             dropdownRadius: 0,
                             // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
@@ -306,6 +319,10 @@ class _BookSeatState extends State<BookSeat> {
                           ),
                           FormLabel(context, "DC"),
                           DropDownTextField(
+                            padding: EdgeInsets.zero,
+                            textFieldDecoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.only(top: 23, bottom: 0)),
                             initialValue: "ILMUMBAISTP",
                             dropdownRadius: 0,
                             // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
@@ -365,6 +382,10 @@ class _BookSeatState extends State<BookSeat> {
                           ),
                           FormLabel(context, "Building Number"),
                           DropDownTextField(
+                            padding: EdgeInsets.zero,
+                            textFieldDecoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.only(top: 23, bottom: 0)),
                             initialValue: "SDB01",
                             dropdownRadius: 0,
                             // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
@@ -381,6 +402,10 @@ class _BookSeatState extends State<BookSeat> {
                                     children: [
                                       FormLabel(context, "Floor"),
                                       DropDownTextField(
+                                        padding: EdgeInsets.zero,
+                                        textFieldDecoration: InputDecoration(
+                                            contentPadding: EdgeInsets.only(
+                                                top: 23, bottom: 0)),
                                         initialValue: "FLOOR-4",
                                         dropdownRadius: 0,
                                         // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
@@ -402,6 +427,10 @@ class _BookSeatState extends State<BookSeat> {
                                     children: [
                                       FormLabel(context, "Wing"),
                                       DropDownTextField(
+                                        padding: EdgeInsets.zero,
+                                        textFieldDecoration: InputDecoration(
+                                            contentPadding: EdgeInsets.only(
+                                                top: 23, bottom: 0)),
                                         initialValue: "A",
                                         dropdownRadius: 0,
                                         // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
