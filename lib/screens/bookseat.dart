@@ -334,6 +334,9 @@ class _BookSeatState extends State<BookSeat> {
                           Row(
                             children: [
                               Radio(
+                                  activeColor: Colors.purple,
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
                                   value: 1,
                                   groupValue: selectedRadio,
                                   onChanged: (v) {
@@ -349,6 +352,9 @@ class _BookSeatState extends State<BookSeat> {
                                     fontSize: 16),
                               ),
                               Radio(
+                                  activeColor: Colors.purple,
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
                                   value: 2,
                                   groupValue: selectedRadio,
                                   onChanged: (v) {
@@ -364,6 +370,9 @@ class _BookSeatState extends State<BookSeat> {
                                     fontSize: 16),
                               ),
                               Radio(
+                                  activeColor: Colors.purple,
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
                                   value: 3,
                                   groupValue: selectedRadio,
                                   onChanged: (v) {
