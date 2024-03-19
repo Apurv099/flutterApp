@@ -122,13 +122,17 @@ class _BookSeatState extends State<BookSeat> {
       body: Column(
         children: [
           Container(
-            height: 35,
+            height: 33,
           ),
           Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/back.jpeg"),
+                    fit: BoxFit.fill)),
             margin: EdgeInsets.only(bottom: 10),
             width: MediaQuery.of(context).size.width,
             height: 52,
-            color: Color.fromARGB(210, 124, 0, 169),
+            // color: Color.fromARGB(210, 124, 0, 169),
             child: Row(
               children: [
                 IconButton(
@@ -256,7 +260,7 @@ class _BookSeatState extends State<BookSeat> {
                       alignment: Alignment.centerRight,
                       child: CircleAvatar(
                         radius: 22,
-                        backgroundColor: Color.fromARGB(255, 68, 0, 81),
+                        backgroundColor: Color.fromARGB(255, 73, 42, 92),
                         child: Icon(
                           Icons.add,
                           color: Colors.white,
@@ -280,6 +284,8 @@ class _BookSeatState extends State<BookSeat> {
                         children: [
                           FormLabel(context, "Date"),
                           DropDownTextField(
+                            // textFieldDecoration: InputDecoration(
+                            //     contentPadding: EdgeInsets.only(bottom: 20)),
                             initialValue: date[0].name,
                             dropdownRadius: 0,
                             dropdownColor:
