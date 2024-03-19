@@ -81,37 +81,77 @@ class _BookSeatState extends State<BookSeat> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        flexibleSpace: Opacity(
-          opacity: 0.9,
-          child: Container(
-            height: 20,
-            color: Colors.white,
-          ),
-        ),
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back),
-          color: Colors.white,
-        ),
-        backgroundColor: Color.fromARGB(255, 171, 4, 200),
-        title: Text(
-          "BOOK SEAT",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-          // style: GoogleFonts.openSans(
-          //     color: Colors.white, fontWeight: FontWeight.w600, fontSize: 18),
-        ),
-        // bottom: PreferredSize(
-        //   preferredSize: Size.fromHeight(20),
-        //   child: Container(),
-        // ),
-      ),
+      // appBar: PreferredSize(
+      //   preferredSize: Size.fromHeight(80),
+      //   child: AppBar(
+      //     excludeHeaderSemantics: true,
+      //     flexibleSpace: Container(
+      //       height: 42,
+      //       color: Colors.white,
+      //     ),
+      //     // automaticallyImplyLeading: false,
+      //     centerTitle: true,
+      //     leading: IconButton(
+      //       onPressed: () {
+      //         Navigator.pop(context);
+      //       },
+      //       icon: Icon(Icons.arrow_back),
+      //       color: Colors.white,
+      //     ),
+      //     backgroundColor: Color.fromARGB(255, 171, 4, 200),
+      //     title: Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Text(
+      //         "BOOK SEAT",
+      //         style:
+      //             TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+      //         // style: GoogleFonts.openSans(
+      //         //     color: Colors.white, fontWeight: FontWeight.w600, fontSize: 18),
+      //       ),
+      //     ),
+      //     // bottom: PreferredSize(
+      //     //   preferredSize: Size.fromHeight(20),
+      //     //   child: Container(
+      //     //     height: 50,
+      //     //     color: Colors.white,
+      //     //     child: Text("Book seat"),
+      //     //   ),
+      //     // ),
+      //   ),
+      // ),
       body: Column(
         children: [
+          Container(
+            height: 40,
+          ),
+          Container(
+            margin: EdgeInsets.only(bottom: 10),
+            width: MediaQuery.of(context).size.width,
+            height: 55,
+            color: Color.fromARGB(255, 143, 0, 168),
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back),
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                ),
+                Text(
+                  "BOOK SEAT",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -216,7 +256,7 @@ class _BookSeatState extends State<BookSeat> {
                       alignment: Alignment.centerRight,
                       child: CircleAvatar(
                         radius: 22,
-                        backgroundColor: const Color.fromARGB(255, 102, 0, 120),
+                        backgroundColor: Color.fromARGB(255, 68, 0, 81),
                         child: Icon(
                           Icons.add,
                           color: Colors.white,
@@ -231,7 +271,7 @@ class _BookSeatState extends State<BookSeat> {
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
-                          fontSize: 18),
+                          fontSize: 16),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
