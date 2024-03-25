@@ -4,10 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infy_me/screens/bookseat.dart';
 import 'package:intl/intl.dart';
+
+import 'drop.dart';
+
 // import 'package:google_fonts/google_fonts.dart';
 class HomeScreen extends StatefulWidget {
   final String? seatNo;
-  const HomeScreen({super.key, this.seatNo});
+  final SingleValueDropDownController? cnt;
+
+  const HomeScreen({super.key, this.seatNo,this.cnt});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -228,6 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   builder: (context) =>
                                                       BookSeat(
                                                         seatNo: widget?.seatNo,
+                                                        cnt: widget?.cnt,
                                                       )));
                                         },
                                         child: Icon(

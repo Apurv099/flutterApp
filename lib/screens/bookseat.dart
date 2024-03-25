@@ -10,13 +10,16 @@ import 'drop.dart';
 
 class BookSeat extends StatefulWidget {
   final String? seatNo;
-  const BookSeat({super.key, this.seatNo});
+  final SingleValueDropDownController? cnt;
+
+  const BookSeat({super.key, this.seatNo, this.cnt});
 
   @override
   State<BookSeat> createState() => _BookSeatState();
 }
 
 class _BookSeatState extends State<BookSeat> {
+  var location;
   List<DropDownValueModel> date = [
     DropDownValueModel(
         name: DateFormat('dd-MMM-yyyy')
@@ -52,7 +55,7 @@ class _BookSeatState extends State<BookSeat> {
     DropDownValueModel(name: "Trivandrum", value: "Trivandrum"),
   ];
   List<DropDownValueModel> dc = [
-    DropDownValueModel(name: "MUMVIKHROLI", value: "MUMVIKHROLI"),
+    DropDownValueModel(name: "MUMVIKHROLI1", value: "MUMVIKHROLI1"),
     DropDownValueModel(name: "ILMUMBAISTP", value: "ILMUMBAISTP")
   ];
   List<DropDownValueModel> buildingNo = [
@@ -76,6 +79,7 @@ class _BookSeatState extends State<BookSeat> {
   @override
   void initState() {
     DateTime tomorrow = DateTime.now().add(Duration(days: 1));
+    location = widget?.cnt?.dropDownValue?.name ?? "";
 
     super.initState();
   }
@@ -239,22 +243,50 @@ class _BookSeatState extends State<BookSeat> {
                               SizedBox(
                                 height: 15,
                               ),
-                              Text(
-                                  "Cubicle: MUM02 01 04 A ${widget?.seatNo}", //amethysta
-                                  style: TextStyle(
-                                      wordSpacing: 0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16)),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                  "Mumbai, ILMUMBAISTP, SDB01, FLOOR-04, A Wing", //amethysta
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black87))
+                              if (location != "MUMVIKHROLI1")
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        "Cubicle: MUM02 01 04 A ${widget?.seatNo}", //amethysta
+                                        style: TextStyle(
+                                            wordSpacing: 0,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16)),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                        "Mumbai, ILMUMBAISTP, SDB01, FLOOR-04, A Wing", //amethysta
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.normal,
+                                            color: Colors.black87))
+                                  ],
+                                ),
+                              if (location == "MUMVIKHROLI1")
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        "Cubicle: MUM01 01 11 A ${widget?.seatNo}", //amethysta
+                                        style: TextStyle(
+                                            wordSpacing: 0,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16)),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                        "Mumbai, MUMVIKHROLI1, SDB01, FLOOR-11, A Wing", //amethysta
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.normal,
+                                            color: Colors.black87))
+                                  ],
+                                )
                             ],
                           ),
                         ),
@@ -323,7 +355,7 @@ class _BookSeatState extends State<BookSeat> {
                             textFieldDecoration: InputDecoration(
                                 contentPadding:
                                     EdgeInsets.only(top: 23, bottom: 0)),
-                            initialValue: "ILMUMBAISTP",
+                            initialValue: location,
                             dropdownRadius: 0,
                             // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
                             clearOption: false,
