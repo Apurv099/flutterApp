@@ -67,6 +67,9 @@ class _BookSeatState extends State<BookSeat> {
   List<DropDownValueModel> floor = [
     DropDownValueModel(name: "FLOOR-4", value: "a"),
   ];
+  List<DropDownValueModel> floor11 = [
+    DropDownValueModel(name: "FLOOR-11", value: "a"),
+  ];
 
   int? selectedRadio = 0;
 
@@ -447,11 +450,15 @@ class _BookSeatState extends State<BookSeat> {
                                         textFieldDecoration: InputDecoration(
                                             contentPadding: EdgeInsets.only(
                                                 top: 23, bottom: 0)),
-                                        initialValue: "FLOOR-4",
+                                        initialValue: location == "MUMVIKHROLI1"
+                                            ? "FLOOR-11"
+                                            : "FLOOR-4",
                                         dropdownRadius: 0,
                                         // dropdownColor: const Color.fromARGB(255, 255, 255, 255),
                                         clearOption: false,
-                                        dropDownList: floor,
+                                        dropDownList: location == "MUMVIKHROLI1"
+                                            ? floor11
+                                            : floor,
                                         onChanged: (val) {},
                                       ),
                                     ],
