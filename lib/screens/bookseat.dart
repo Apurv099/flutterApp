@@ -280,7 +280,7 @@ class _BookSeatState extends State<BookSeat> {
                                       height: 5,
                                     ),
                                     Text(
-                                        "Mumbai, MUMVIKHROLI1, SDB01, FLOOR-11, A Wing", //amethysta
+                                        "Mumbai, MUMVIKHROLI1, SDB01, FLOOR-11,\nA Wing", //amethysta
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
